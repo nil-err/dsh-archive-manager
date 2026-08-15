@@ -5,4 +5,4 @@
 # management card inside the settings page.
 - insert:
     - id: archive-manager
-      name: 'dsh-archive-manager'
+      name: '@mlgbnb/dsh-archive-manager'

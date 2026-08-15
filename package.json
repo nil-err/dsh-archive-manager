@@ -1,5 +1,5 @@
 {
-  "name": "dsh-archive-manager",
+  "name": "@mlgbnb/dsh-archive-manager",
   "version": "1.0.0",
   "description": "DSH Archive Manager - list and delete archived sessions from the settings page",
   "type": "module",

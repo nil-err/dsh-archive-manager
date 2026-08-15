@@ -2,6 +2,9 @@
 
 为 DeepSeek Harness (DSH) Web 界面提供与 Codex 1:1 一致的**会话归档管理**功能，支持在设置页中直观查看、按项目筛选/排序、一键取消归档以及彻底删除归档会话。
 
+[![npm version](https://img.shields.io/npm/v/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
+[![npm downloads](https://img.shields.io/npm/dm/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
+
 ---
 
 ## 🌟 核心特性
@@ -23,59 +26,58 @@
 
 ## 📦 如何安装与配置到 DSH
 
-DSH 采用 Cordis 模块化微内核架构，你可以通过以下两种方式之一安装该插件：
+DSH 采用 Cordis 模块化微内核架构，你可以通过以下方式安装该插件：
 
-### 推荐方法：使用 DSH 官方 CLI 命令（一键安装）
+### 方法一：通过 NPM 线上源安装（推荐）
 
-在终端中执行以下命令（将 `<插件所在绝对路径>` 替换为你本地实际存放 `dsh-archive-manager` 的绝对路径）：
+#### 1. 使用 DSH 官方 CLI 命令一键安装
 
 ```bash
-# 将插件以 link 方式添加至 web profile 的依赖中
-dsh plugin --profile web add -w "link:<插件所在绝对路径>"
+dsh plugin --profile web add -w @mlgbnb/dsh-archive-manager
 ```
 
-例如插件存放在统一插件目录下时：
+#### 2. 或者在 Web Profile 目录下通过 npm/pnpm 安装
+
 ```bash
-dsh plugin --profile web add -w "link:/path/to/dsh/plugin/dsh-archive-manager"
+cd ~/.dsh/profiles/web
+npm i @mlgbnb/dsh-archive-manager
+# 或使用 pnpm
+pnpm add -w @mlgbnb/dsh-archive-manager
 ```
 
-> **注意**：如果执行 `add` 后启动报错提示子包重复声明，请检查 `~/.dsh/profiles/web/package.json` 中的 `dsh.profile.bundles` 数组，确保其中仅包含根包（如 `dsh-archive-manager`、`@linxin666/dsh-web-ui-all` 等），避免包含子组件包。
-
----
-
-### 手动安装配置方法
-
-如果你希望手动配置文件：
-
-#### 1. 编辑 `~/.dsh/profiles/web/package.json`
-
-在 `dependencies` 中添加软链接依赖，并在 `dsh.profile.bundles` 列表中注册该插件：
+安装完成后，请确认 `~/.dsh/profiles/web/package.json` 中的 `dsh.profile.bundles` 数组已包含 `@mlgbnb/dsh-archive-manager`：
 
 ```json
 {
   "name": "dsh-profile-web",
   "private": true,
   "dependencies": {
-    "dsh-archive-manager": "link:/path/to/dsh/plugin/dsh-archive-manager"
+    "@mlgbnb/dsh-archive-manager": "^1.0.0"
   },
   "dsh": {
     "profile": {
       "bundles": [
         "@deepseek-ai/dsh-base",
         "@deepseek-ai/dsh-web-app",
-        "dsh-archive-manager"
+        "@mlgbnb/dsh-archive-manager"
       ]
     }
   }
 }
 ```
 
-#### 2. 在 Profile 目录下安装链接
+---
+
+### 方法二：通过本地源码目录（Link 方式）安装
+
+如果你在本地开发该插件，可以使用本地链接方式安装：
 
 ```bash
-cd ~/.dsh/profiles/web
-pnpm install
+# 将本地插件目录以 link 方式添加至 web profile 的依赖中
+dsh plugin --profile web add -w "link:/path/to/dsh/plugin/dsh-archive-manager"
 ```
+
+> **注意**：如果执行 `add` 后启动报错提示子包重复声明，请检查 `~/.dsh/profiles/web/package.json` 中的 `dsh.profile.bundles` 数组，确保其中仅包含根包（如 `@mlgbnb/dsh-archive-manager`、`@linxin666/dsh-web-ui-all` 等），避免包含子组件包。
 
 ---
 
