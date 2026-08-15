@@ -1,14 +1,11 @@
 # DSH Archive Manager 插件 (Codex-style 归档管理)
 
+中文 | [English](README.en.md)
+
 为 DeepSeek Harness (DSH) Web 界面提供与 Codex 1:1 一致的**会话归档管理**功能，支持在设置页中直观查看、按项目筛选/排序、一键取消归档以及彻底删除归档会话。
 
 [![npm version](https://img.shields.io/npm/v/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
 [![npm downloads](https://img.shields.io/npm/dm/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
-
-## English
-
-**DSH Archive Manager** is a DeepSeek Harness (DSH) Web UI plugin that adds a Codex-style archived session manager to the settings page. It lets you view, search, filter, restore, and permanently delete archived sessions, with live synchronization to the sidebar.
-
 
 ---
 
@@ -106,7 +103,8 @@ dsh web
 dsh-archive-manager/
 ├── cordis.patch.yml   # Cordis 插件 Profile 声明补丁
 ├── package.json       # 模块清单与依赖声明
-├── README.md          # 插件说明文档
+├── README.md          # 中文说明文档
+├── README.en.md       # English documentation
 └── lib/
     ├── index.js       # Host 端（提供 /api/dsh-archive-manager/* 接口与 workspaceRegistry 交互）
     └── client.js      # Client 端（Codex 风格卡片交互、项目分组、搜索筛选、删除与还原逻辑）
