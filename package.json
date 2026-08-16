@@ -1,6 +1,6 @@
 {
   "name": "@mlgbnb/dsh-archive-manager",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "DSH Archive Manager - list and delete archived sessions from the settings page",
   "type": "module",
   "main": "lib/index.js",
@@ -41,7 +41,10 @@
   "files": [
     "lib",
     "src",
-    "cordis.patch.yml"
+    "cordis.patch.yml",
+    "README.md",
+    "README.en.md",
+    "LICENSE"
   ],
   "repository": {
     "type": "git",
