@@ -37,8 +37,11 @@
   ],
   "author": "DSH Harness Agent",
   "license": "MIT",
-  "dependencies": {},
-  "files": [
+ "dependencies": {},
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+ "files": [
     "lib",
     "src",
     "cordis.patch.yml",
