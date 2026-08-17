@@ -2,7 +2,7 @@
 
 中文 | [English](README.en.md)
 
-为 DeepSeek Harness (DSH) Web 界面提供与 Codex 1:1 一致的**会话归档管理**功能，支持在设置页中直观查看、按项目筛选/排序、一键取消归档以及彻底删除归档会话。
+为 DeepSeek Harness (DSH) Web 界面提供与 Codex 1:1 一致的**会话归档管理**功能，支持在设置页中直观查看、搜索/筛选、**预览对话内容**、一键取消归档以及彻底删除归档会话。
 
 [![npm version](https://img.shields.io/npm/v/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
 [![npm downloads](https://img.shields.io/npm/dm/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
@@ -17,11 +17,14 @@
 2. **按项目分组与批量管理**：
    - 会话按所属工作区/项目自动分组展示，带有项目文件夹图标及对话计数；
    - 每个项目组支持 `···` 更多操作菜单，可一键「**删除项目中的全部内容**」。
-3. **真实内容解析与还原**：
-   - 自动解析底层会话流，精确展示会话标题与首条消息内容，日期格式与 Codex 一致（如 `2026年8月15日, 1:34`）；
-   - **取消归档**：点击「取消归档」按钮，会话立即还原回原所属工作区列表，并通过 SSE 实时广播同步侧边栏；
-   - **彻底删除**：点击垃圾桶图标彻底删除会话元数据及磁盘数据文件，释放存储空间。
-4. **实时双向同步（Live Sync）**：
+3. **真实内容解析、预览与还原**：
+   - 自动解析底层会话流，精确展示会话标题、创建时间、对话轮数与磁盘占用大小，日期格式与 Codex 一致（如 `2026年8月15日, 1:34`）；
+   - **会话内容预览**：点击「查看内容」按钮，无需恢复即可在弹窗中直接浏览该会话最近 50 条用户/助手消息记录（自动清理会话日志中的系统注入文本）；
+   - **取消归档**：点击「恢复会话」按钮，会话立即还原回原所属工作区列表，并通过 SSE 实时广播同步侧边栏；
+   - **彻底删除**：点击「物理删除」按钮彻底删除会话元数据及磁盘数据文件，释放存储空间。
+4. **零外部依赖的解压引擎**：
+   - 内置基于 Node `zlib` 的 zstd 多帧解压引擎，可读取 `session.jsonl.zstd` 与未压缩的 `session.jsonl`，无需在系统中安装 `zstd` 命令行工具。
+5. **实时双向同步（Live Sync）**：
    - 卡片展开时自动监听侧边栏归档变动，在工作区侧边栏归档或恢复会话时，归档管理列表自动无感同步更新。
 
 ---
@@ -105,7 +108,9 @@ dsh-archive-manager/
 ├── package.json       # 模块清单与依赖声明
 ├── README.md          # 中文说明文档
 ├── README.en.md       # English documentation
-└── lib/
-    ├── index.js       # Host 端（提供 /api/dsh-archive-manager/* 接口与 workspaceRegistry 交互）
-    └── client.js      # Client 端（Codex 风格卡片交互、项目分组、搜索筛选、删除与还原逻辑）
+├── lib/
+│   ├── index.js       # Host 端（提供 /api/dsh-archive-manager/* 接口与 workspaceRegistry 交互）
+│   └── client.js      # Client 端（Codex 风格卡片交互、项目分组、搜索筛选、预览弹窗、删除与还原逻辑）
+└── src/
+    └── index.ts       # TypeScript 伴生源文件（类型声明与 Host 入口说明）
 ```

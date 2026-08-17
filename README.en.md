@@ -5,7 +5,7 @@
 [![npm version](https://img.shields.io/npm/v/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
 [![npm downloads](https://img.shields.io/npm/dm/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
 
-**DSH Archive Manager** is a DeepSeek Harness (DSH) Web UI plugin that adds a Codex-style archived session manager to the settings page. It lets you view, search, filter, restore, and permanently delete archived sessions, with live synchronization to the sidebar.
+**DSH Archive Manager** is a DeepSeek Harness (DSH) Web UI plugin that adds a Codex-style archived session manager to the settings page. It lets you view, search, filter, **preview conversation history**, restore, and permanently delete archived sessions, with live synchronization to the sidebar.
 
 ## Features
 
@@ -15,10 +15,13 @@
 - **Group by project with batch management**
   - Sessions are grouped by workspace/project automatically, with folder icons and conversation counts.
   - Each project group has a `···` menu with one-click **delete all contents in this project**.
-- **Real content parsing and restore**
-  - Parses the underlying session stream to show accurate titles and first-message content, with Codex-style dates (e.g. `August 15, 2026, 1:34`).
+- **Real content parsing, preview and restore**
+  - Parses the underlying session stream to show accurate titles, creation time, turn count and disk size, with Codex-style dates (e.g. `August 15, 2026, 1:34`).
+  - **Conversation preview**: click **View** to browse the latest 50 user/assistant messages in a modal (system-injected text is stripped automatically) — no need to restore first.
   - **Unarchive**: restores a session back to its original workspace list immediately, with SSE real-time sidebar sync.
   - **Permanent delete**: removes the session metadata and disk data files to free storage.
+- **Zero-dependency decompression engine**
+  - Built-in zstd multi-frame decompressor based on Node `zlib`; reads both `session.jsonl.zstd` and plain `session.jsonl` — no external `zstd` CLI required.
 - **Live two-way sync**
   - When the card is open, it listens for sidebar archive changes and updates the archive list automatically when sessions are archived or restored.
 
@@ -92,9 +95,11 @@ dsh-archive-manager/
 ├── package.json       # Package manifest and dependency declarations
 ├── README.md          # Chinese documentation
 ├── README.en.md       # English documentation
-└── lib/
-    ├── index.js       # Host (provides /api/dsh-archive-manager/* routes and workspaceRegistry interaction)
-    └── client.js      # Client (Codex-style card interaction, project grouping, search/filter, delete and restore logic)
+├── lib/
+│   ├── index.js       # Host (provides /api/dsh-archive-manager/* routes and workspaceRegistry interaction)
+│   └── client.js      # Client (Codex-style card interaction, project grouping, search/filter, preview modal, delete and restore logic)
+└── src/
+    └── index.ts       # TypeScript companion source (type declarations and host entry notes)
 ```
 
 ## License
