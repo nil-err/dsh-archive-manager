@@ -1,6 +1,6 @@
 {
   "name": "@mlgbnb/dsh-archive-manager",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "DSH Archive Manager - preview, restore, and delete archived sessions from the settings page",
   "type": "module",
   "main": "lib/index.js",
@@ -37,11 +37,11 @@
   ],
   "author": "DSH Harness Agent",
   "license": "MIT",
- "dependencies": {},
+  "dependencies": {},
   "peerDependencies": {
     "react": "^18.2.0"
   },
- "files": [
+  "files": [
     "lib",
     "src",
     "cordis.patch.yml",
