@@ -7,6 +7,8 @@
 [![npm version](https://img.shields.io/npm/v/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
 [![npm downloads](https://img.shields.io/npm/dm/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
 
+![DSH Archive Manager 归档管理设置与会话列表](docs/images/archive-manager.png)
+
 ---
 
 ## 🌟 核心特性
@@ -108,6 +110,8 @@ dsh-archive-manager/
 ├── package.json       # 模块清单与依赖声明
 ├── README.md          # 中文说明文档
 ├── README.en.md       # English documentation
+├── docs/
+│   └── images/        # 说明文档截图与预览图
 ├── lib/
 │   ├── index.js       # Host 端（提供 /api/dsh-archive-manager/* 接口与 workspaceRegistry 交互）
 │   └── client.js      # Client 端（Codex 风格卡片交互、项目分组、搜索筛选、预览弹窗、删除与还原逻辑）

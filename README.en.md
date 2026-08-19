@@ -5,6 +5,8 @@
 [![npm version](https://img.shields.io/npm/v/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
 [![npm downloads](https://img.shields.io/npm/dm/@mlgbnb/dsh-archive-manager.svg)](https://www.npmjs.com/package/@mlgbnb/dsh-archive-manager)
 
+![DSH Archive Manager settings card and archived session list](docs/images/archive-manager.png)
+
 **DSH Archive Manager** is a DeepSeek Harness (DSH) Web UI plugin that adds a Codex-style archived session manager to the settings page. It lets you view, search, filter, **preview conversation history**, restore, and permanently delete archived sessions, with live synchronization to the sidebar.
 
 ## Features
@@ -95,6 +97,8 @@ dsh-archive-manager/
 ├── package.json       # Package manifest and dependency declarations
 ├── README.md          # Chinese documentation
 ├── README.en.md       # English documentation
+├── docs/
+│   └── images/        # Screenshots and preview images
 ├── lib/
 │   ├── index.js       # Host (provides /api/dsh-archive-manager/* routes and workspaceRegistry interaction)
 │   └── client.js      # Client (Codex-style card interaction, project grouping, search/filter, preview modal, delete and restore logic)
